@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "ood_detection"
+  site-url: "https://yashwiai.github.io/ood_detection"
+  description: "OOD Detection Library built using nbdev"
+  repo-branch: master
+  repo-url: "https://github.com/yashwiai/ood_detection"
