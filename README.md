@@ -13,6 +13,12 @@ detect that such inputs do not belong to any of the training classes.
 pip install ood_detection
 ```
 
+or
+
+``` sh
+conda install -c yashkhandelwal ood_detection
+```
+
 ## Example Usage
 
 ``` python
