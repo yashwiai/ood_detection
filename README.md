@@ -23,32 +23,32 @@ conda install -c yashkhandelwal ood_detection
 
 ``` python
 import numpy as np
-from ood_detection.core import OODMetric # imports OODMetric class and other utility functions
+from sklearn.datasets import make_blobs
+from ood_detection.core import *
 ```
 
 ``` python
-train_embedding = np.random.standard_normal((32, 2048))
-train_labels = np.random.randint(low=0, high=5, size=(32,))
+# example dataset
+n_samples = 500
+n_centers = 5
+n_features = 2048
+
+x, y = make_blobs(n_samples=n_samples, n_features=n_features, centers=n_centers, random_state=0)
+```
+
+``` python
+# using the last cluster as the test and rest as train
+train_embedding = x[np.where(y != (n_centers - 1))]
+train_labels = y[np.where(y != (n_centers - 1))]
+
+test_embedding = x[np.where(y == (n_centers - 1))]
+test_labels = y[np.where(y == (n_centers - 1))]
 ```
 
 ``` python
 ood = OODMetric(train_embedding, train_labels)
+ood_rmd = ood.compute_rmd(test_embedding)
 ```
-
-``` python
-test_embedding = np.random.standard_normal((32, 2048)) # test embedding from same distribution
-scores = ood.compute_rmd(test_embedding) # compute relative mahalanobis distance
-print(scores)
-```
-
-    [ 1.16065497e+13 -1.37269901e+13  3.54920865e+12  4.75570475e+12
-     -4.90615930e+12 -2.63622848e+12 -5.22489520e+11 -7.67105637e+12
-      1.30991140e+12 -5.38689280e+12  2.71026479e+12 -4.07842659e+13
-     -1.01482832e+13 -2.18136787e+13 -6.53841964e+12 -1.70525347e+13
-      1.06493867e+13 -2.04729993e+13  4.68809372e+12 -6.11747086e+12
-      1.09862330e+13  1.03001857e+13 -2.91312276e+13 -9.26086735e+12
-      7.23079505e+12  7.26673743e+12 -4.73734980e+13  3.17798849e+12
-      1.99687662e+13  2.99860166e+12  9.86244208e+11  8.76676896e+12]
 
 ## Built using NBDev
 
@@ -59,9 +59,9 @@ are published to Github Pages, PyPi, Conda etc.
 I’ve written down a [NBDev
 Tutorial](https://yashwiai.github.io/ood_detection/tutorial.html)
 explaining the thought process of Jeremy Howard and folks at FastAI
-behind building it. The tutorial covers about what it can do and how it
-is an amazing tool with support for building softwares following the
-best coding principles.
+behind building it. The tutorial covers about how to get started,
+important functions and description of those I used with the issues I
+faced while exploring the tool for the first time.
 
 ## Acknowledgements
 
