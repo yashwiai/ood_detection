@@ -3,13 +3,13 @@
 # %% auto 0
 __all__ = ['compute_mean_and_covariance', 'compute_mahalanobis_distance', 'OODMetric']
 
-# %% ../00_core.ipynb 5
+# %% ../00_core.ipynb 4
 import numpy as np
 
 from fastcore.utils import *
 from tqdm import tqdm
 
-# %% ../00_core.ipynb 7
+# %% ../00_core.ipynb 6
 def compute_mean_and_covariance(
     embdedding: np.ndarray, # (n_sample, n_dim) n_sample - sample size of training set, n_dim - dimension of the embedding
     labels: np.ndarray, # (n_sample, ) n_sample - sample size of training set
@@ -38,7 +38,7 @@ def compute_mean_and_covariance(
     covariance = covariance / len(labels)
     return np.stack(means), covariance
 
-# %% ../00_core.ipynb 8
+# %% ../00_core.ipynb 7
 def compute_mahalanobis_distance(
     embdedding: np.ndarray, # Embdedding of dimension (n_sample, n_dim)
     means: np.ndarray, # A matrix of size (num_classes, n_dim), where the ith row corresponds to the mean of the fitted Gaussian distribution for the i-th class.
@@ -72,7 +72,7 @@ def compute_mahalanobis_distance(
 
     return np.stack(maha_distances)
 
-# %% ../00_core.ipynb 10
+# %% ../00_core.ipynb 9
 class OODMetric:
     """OOD Metric Class that calculates the OOD scores for a batch of input embeddings.
     Initialises the class by fitting the class conditional gaussian using training data
@@ -86,7 +86,7 @@ class OODMetric:
         self.means, self.covariance = compute_mean_and_covariance(train_embdedding, train_labels)
         self.means_bg, self.covariance_bg = compute_mean_and_covariance(train_embdedding, np.zeros_like(train_labels))
 
-# %% ../00_core.ipynb 11
+# %% ../00_core.ipynb 10
 @patch
 def compute_rmd(
     self:OODMetric,
