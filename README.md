@@ -29,20 +29,20 @@ from ood_detection.core import *
 
 ``` python
 # example dataset
-n_samples = 500
-n_centers = 5
-n_features = 2048
+n_samples = 1000
+n_centers = 10
+n_features = 1024
 
 x, y = make_blobs(n_samples=n_samples, n_features=n_features, centers=n_centers, random_state=0)
 ```
 
 ``` python
-# using the last cluster as the test and rest as train
-train_embedding = x[np.where(y != (n_centers - 1))]
-train_labels = y[np.where(y != (n_centers - 1))]
+# using the last 5 cluster as the test and rest as train
+train_embedding = x[np.where(y < (n_centers - 5))]
+train_labels = y[np.where(y < (n_centers - 5))]
 
-test_embedding = x[np.where(y == (n_centers - 1))]
-test_labels = y[np.where(y == (n_centers - 1))]
+test_embedding = x[np.where(y >= (n_centers - 5))]
+test_labels = y[np.where(y >= (n_centers - 5))]
 ```
 
 ``` python
