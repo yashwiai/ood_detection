@@ -28,8 +28,9 @@ conda install -c yashkhandelwal ood_detection
 
 ``` python
 import numpy as np
+import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs
-from ood_detection.core import *
+from ood_detection.core import OODMetric
 ```
 
 ``` python
