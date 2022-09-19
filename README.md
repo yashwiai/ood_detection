@@ -69,21 +69,21 @@ plt.show()
 
 This OOD Detection library was built in a jupyter notebook with proper
 documentation and test cases. These test cases are verified before they
-are published to Github Pages, PyPi, Conda etc.
+are published to GitHub Pages, PyPi, Conda, etc.
 
 I’ve written down a [NBDev
 Tutorial](https://yashwiai.github.io/ood_detection/tutorial.html)
-explaining the thought process of Jeremy Howard and folks at FastAI
-behind building it. The tutorial covers about how to get started,
-important functions and description of those I used with the issues I
-faced while exploring the tool for the first time.
+explaining the thought process of Jeremy Howard and the folks at FastAI
+behind building it. The tutorial covers how to get started, important
+functions, and a description of those I used with the issues I faced
+while exploring the tool for the first time.
 
 ## Acknowledgements
 
 Special thanks to **[Yugam
 Tiwari](https://www.linkedin.com/in/tiwari-yugam)** for explaining the
-code he has written for the OODMetric and helping me packaging in the
-library.
+code he has written for the OODMetric and for helping me with packaging
+the library.
 
 Thanks to **[Soma Dhavala](https://in.linkedin.com/in/somasdhavala)**
 for coming up with the idea to prepare NBDev Tutorial and helping with
