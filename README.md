@@ -7,6 +7,11 @@ This library is used for OOD Detection where a model encounters new
 classes at test time that were not seen during training. The goal is to
 detect that such inputs do not belong to any of the training classes.
 
+![CI](https://github.com/yashwiai/ood_detection/workflows/CI/badge.svg)
+[![PyPI](https://img.shields.io/pypi/v/ood_detection?color=blue&label=pypi%20version.png)](https://pypi.org/project/ood_detection/#description)
+[![Conda (channel
+only)](https://img.shields.io/conda/vn/yashkhandelwal/ood_detection?color=seagreen&label=conda%20version.png)](https://anaconda.org/yashkhandelwal/ood_detection)
+
 ## Install
 
 ``` sh
@@ -47,8 +52,18 @@ test_labels = y[np.where(y >= (n_centers - 5))]
 
 ``` python
 ood = OODMetric(train_embedding, train_labels)
+
+in_distribution_rmd = ood.compute_rmd(train_embedding)
 ood_rmd = ood.compute_rmd(test_embedding)
 ```
+
+``` python
+plt.hist([in_distribution_rmd, ood_rmd], label=["In Distribution", "OOD"])
+plt.legend()
+plt.show()
+```
+
+![](index_files/figure-gfm/cell-6-output-1.png)
 
 ## Built using NBDev
 
